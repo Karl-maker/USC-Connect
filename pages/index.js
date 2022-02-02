@@ -1,7 +1,3 @@
-
-
 export default function Home() {
-  return (
-   <></>
-  )
+  return <>Welcome To USC Connect</>;
 }
