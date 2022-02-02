@@ -1,3 +1,3 @@
 export default function Home() {
-  return <>Welcome To USC Connect</>;
+  return <h1>Welcome To USC Connect</h1>;
 }
