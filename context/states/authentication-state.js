@@ -20,8 +20,6 @@ export const authMachine = createMachine(
         //Delete LocalStorage and Clear Cookies
         on: {
           LOGIN_STUDENT: [{ target: "student" }],
-        },
-        on: {
           LOGIN_ADMINISTRATOR: [{ target: "administrator" }],
         },
       },
