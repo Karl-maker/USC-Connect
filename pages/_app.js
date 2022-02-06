@@ -6,7 +6,6 @@ import "../styles/globals.css";
 
 import Head from "next/head";
 import Script from "next/script";
-import { ContextWrapper } from "../context/context-wrapper";
 
 function App({ Component, pageProps }) {
   return (
@@ -30,9 +29,8 @@ function App({ Component, pageProps }) {
           Below is where all the files in the pages folder will render.
           So we wrap this in whatever code we would want globally in the code (Example: Header, Footer, Navigation, Context)
         */}
-      <ContextWrapper>
-        <Component {...pageProps} />
-      </ContextWrapper>
+
+      <Component {...pageProps} />
     </>
   );
 }
