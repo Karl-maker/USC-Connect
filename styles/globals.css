@@ -11,6 +11,30 @@ a {
   text-decoration: none;
 }
 
+a,
+a:hover,
+a:focus,
+a:active {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
 * {
   box-sizing: border-box;
+}
+
+textarea:focus,
+input:focus,
+button:focus {
+  outline: none;
+  text-decoration: none;
+  border: none;
+}
+
+.special-screen {
+  background-image: url("../public/special-screen.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 30%;
 }

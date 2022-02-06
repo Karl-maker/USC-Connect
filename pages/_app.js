@@ -1,6 +1,7 @@
 // Below CSS file is global and will affect the entire code
 
 import "../styles/globals.css";
+import PageTemplate from "../components/template";
 
 // Next.js has components for many HTML elements. Make sure to check their documentation before doing anything major
 
@@ -29,8 +30,9 @@ function App({ Component, pageProps }) {
           Below is where all the files in the pages folder will render.
           So we wrap this in whatever code we would want globally in the code (Example: Header, Footer, Navigation, Context)
         */}
-
-      <Component {...pageProps} />
+      <PageTemplate>
+        <Component {...pageProps} />
+      </PageTemplate>
     </>
   );
 }

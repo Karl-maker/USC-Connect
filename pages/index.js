@@ -1,3 +1,8 @@
 export default function Home() {
-  return <h1>Welcome To USC Connect</h1>;
+  return (
+    <div
+      style={{ height: "100vh", width: "100vw" }}
+      className="special-screen"
+    ></div>
+  );
 }
