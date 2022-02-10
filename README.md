@@ -20,6 +20,18 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
 
+## CSS Modules
+
+[CSS Module Example](https://nextjs.org/docs/basic-features/built-in-css-support): here we can look at how to create CSS modules and use them throughout our code.
+
+Please only use CSS modules to keep our main css file clean. This is very important
+
+## GitHub
+
+Commiting your code is the most rewarding aspect of the job, if you don't have your own branch in the discord request to get one made. This way everyone's contribution is seperated. This will avoid errors and merge conflicts.
+
+Note: Please stick with your file only. Don't work on anyone else's file.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
