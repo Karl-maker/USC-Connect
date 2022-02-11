@@ -1,4 +1,5 @@
 import { Button } from "@mui/material";
+import Link from "next/link";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Typography } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
@@ -37,14 +38,17 @@ export default function Header() {
       >
         <div className="row m-4">
           <div className="col-6" style={{ color: "#fff" }}>
-            <Typography
-              style={{ fontWeight: "bold" }}
-              variant="h5"
-              gutterBottom
-              component="div"
-            >
-              USC CONNECT
-            </Typography>
+            <Link href="/" passHref>
+              {/* Link is like an a tag, and passHref is used link within components*/}
+              <Typography
+                style={{ fontWeight: "bold" }}
+                variant="h5"
+                gutterBottom
+                component="div"
+              >
+                USC CONNECT
+              </Typography>
+            </Link>
           </div>
           <div className="col-6 text-end">
             {/*
