@@ -6,7 +6,7 @@ import style from "../styles/modules/error.module.css";
 
 we used Next.js Component CSS feature to import CSS 
 
-read here for more info: https://nextjs.org/docs/advanced-features/custom-error-page#customizing-the-404-page
+read here for more info: https://nextjs.org/docs/basic-features/built-in-css-support#adding-component-level-css
 
 */
 
