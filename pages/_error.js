@@ -1,4 +1,4 @@
-import style from "../styles/modules/home.module.css";
+import style from "../styles/modules/error.module.css";
 
 /*
 
@@ -10,18 +10,20 @@ read here for more info: https://nextjs.org/docs/advanced-features/custom-error-
 
 */
 
-export default function Home() {
+function Error() {
   return (
     <div
       style={{ height: "100vh", width: "100vw" }}
-      className={style.specialScreen}
+      className={style.errorScreen}
     >
+      {/* style = {{ ____ }} <--- this is for inline CSS*/}
       <div className={style.WelcomeDialogue}>
         <h1 className={style.WelcomeText}>
-          Connecting <div>Our</div>
-          <div style={{ color: "#e7b617" }}>Students</div> Together
+          Error<h2>Something Went Wrong. Please Try Again</h2>
         </h1>
       </div>
     </div>
   );
 }
+
+export default Error;
