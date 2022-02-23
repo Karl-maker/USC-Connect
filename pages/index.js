@@ -1,3 +1,4 @@
+import { Android } from "@mui/icons-material";
 import style from "../styles/modules/home.module.css";
 
 /*
@@ -11,8 +12,11 @@ read here for more info: https://nextjs.org/docs/basic-features/built-in-css-sup
 */
 
 export default function Home() {
+  
   return (
+    
     <div
+    
       style={{ height: "100vh", width: "100vw" }}
       className={style.specialScreen}
     >
