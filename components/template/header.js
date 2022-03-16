@@ -2,16 +2,6 @@ import { Button } from "@mui/material";
 import Link from "next/link";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Typography } from "@mui/material";
-import { createTheme, ThemeProvider } from "@mui/material/styles";
-
-const theme = createTheme({
-  palette: {
-    neutral: {
-      main: "#eab718",
-      contrastText: "#fff",
-    },
-  },
-});
 
 function sidebarHandler(e) {
   e.preventDefault();
@@ -27,7 +17,7 @@ function sidebarHandler(e) {
 
 export default function Header() {
   return (
-    <ThemeProvider theme={theme}>
+    <>
       <div
         className="container-flush"
         style={{
@@ -73,6 +63,6 @@ export default function Header() {
           </div>
         </div>
       </div>
-    </ThemeProvider>
+    </>
   );
 }

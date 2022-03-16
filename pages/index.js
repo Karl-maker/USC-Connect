@@ -1,4 +1,4 @@
-import { Android } from "@mui/icons-material";
+import { Button } from "@mui/material";
 import style from "../styles/modules/home.module.css";
 
 /*
@@ -12,12 +12,12 @@ read here for more info: https://nextjs.org/docs/basic-features/built-in-css-sup
 */
 
 export default function Home() {
-  
   return (
-    
     <div
-    
-      style={{ height: "100vh", width: "100vw" }}
+      style={{
+        height: "100vh",
+        width: "100vw",
+      }}
       className={style.specialScreen}
     >
       <div className={style.WelcomeDialogue}>
@@ -25,6 +25,16 @@ export default function Home() {
           Connecting <div>Our</div>
           <div style={{ color: "#e7b617" }}>Students</div> Together
         </h1>
+        <Button
+          className="mt-5"
+          href="/register"
+          size="medium"
+          color="neutral"
+          variant="contained"
+          style={{ color: "#fff", textAlign: "center" }}
+        >
+          Create An Account
+        </Button>
       </div>
     </div>
   );
