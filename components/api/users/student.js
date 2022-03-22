@@ -32,8 +32,10 @@ set department_id(department_id){
     this._department_id = department_id;
 }
 
-async GetUserInfo(){}
+//Methods
 
-async Login(){}
+async GetUserInfo(id){}
+
+async Login(email, password){}
 
 }

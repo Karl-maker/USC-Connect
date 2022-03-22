@@ -1,4 +1,4 @@
-
+import axios from "axios";
 /* 
 
 
@@ -27,5 +27,5 @@ this._access_token = access_token;
         this._url = url;
     }
 
-
+//Methods
 }

@@ -1,4 +1,5 @@
 import Connect from "../Connect"
+import axios from "axios";
 
 export default class Events extends Connect{
     constructor(url, access_token, {}){
@@ -76,11 +77,11 @@ async CreateEvent(){
 
 }
 
-async DeleteEvent(){}
+async DeleteEvent(event_id){}
 
-async UpdateEvent(){}
+async UpdateEvent(event_id, update_info){}
 
 async GetAllEvents(){}
 
-async GetEventByID(){}
+async GetEventByID(event_id){}
 }

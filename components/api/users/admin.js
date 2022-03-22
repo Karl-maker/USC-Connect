@@ -16,9 +16,9 @@ set phone_num(phone_num){
 }
 
 //Methods
-async GetUserInfo(){}
+async GetUserInfo(id){}
 
-async Login(){}
+async Login(id, password){}
 
 
 }

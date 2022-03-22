@@ -10,6 +10,7 @@ export default class user extends Connect{
         this.email;
         this.IsLoggedIn = false;
         this.IsAdmin = false;
+        this.password;
     }
 
 //Getters
@@ -46,6 +47,10 @@ set IsAdmin(IsAdmin){
 }
 
 //Methods
-a
+async GetCurrentUser(){}
+
+async register(){}
+
+
 
 }
