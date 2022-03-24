@@ -28,4 +28,8 @@ this._access_token = access_token;
     }
 
 //Methods
+async GetGeneral(url, body, config){
+    const result = await axios.get(`${this.url}${url}`,body,
+    {headers : {Authorization : `Bearer ${this.access_token}`}, ...config,});
+}
 }

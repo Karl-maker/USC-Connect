@@ -1,3 +1,4 @@
+import axios from "axios";
 import Connect from "../Connect"
 
 export default class user extends Connect{
@@ -10,7 +11,7 @@ export default class user extends Connect{
         this.email;
         this.IsLoggedIn = false;
         this.IsAdmin = false;
-        this.password;
+       
     }
 
 //Getters
@@ -47,9 +48,19 @@ set IsAdmin(IsAdmin){
 }
 
 //Methods
-async GetCurrentUser(){}
+async GetCurrentUser(){
+    const result = await axios.get(`${this.url}/api/user`, 
+    {headers: {Authorization: `Bearer ${this.access_token}`},});
 
-async register(){}
+    if (result.status === 200){
+        this.id = result.data[0].id;
+        this.first_name = result.data[0].first_name;
+        this.last_name = result.data[0].last_name;
+        return true;
+    }
+    return false;
+}
+
 
 
 
