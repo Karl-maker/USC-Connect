@@ -3,7 +3,8 @@ import user from "../users/user"
 
 
 export default class student extends user{
-    constructor(){
+    constructor(url, access_token){
+        super(url, access_token)
         this.is_Confirmed = false;
         this.campus_name;
         this.department_id;
@@ -84,7 +85,7 @@ async register(email, password, first_name, last_name, id, campus_name){
     if(result.status === 200){
         return true;
     }
-    return false;
+  else  return false;
 }
 
 
