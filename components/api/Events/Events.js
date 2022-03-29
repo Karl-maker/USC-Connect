@@ -96,7 +96,7 @@ async CreateEvent(event_id, name, date, location, description, campus_name, admi
 
 async DeleteEvent(event_id){
     try{
-        result = await axios.delete(`${this.url}/api/delete?id=${event_id}`)
+        result = await axios.delete(`${this.url}/api/delete?id=${event_id}`);
     }catch (err) {
         console.log(err);
       }
@@ -114,7 +114,8 @@ async UpdateEvent(event_id, update_info){
 
 async GetAllEvents(page_number, page_size, campus_name){
     try {
-        const events = await axios.get(`${this.url}/api/events?page_number=${page_number}&page_size=${page_size}&campus_name=${campus_name}`)
+        const events = await axios.get
+        (`${this.url}/api/events?page_number=${page_number}&page_size=${page_size}&campus_name=${campus_name}`);
         
   
         console.log(events);
