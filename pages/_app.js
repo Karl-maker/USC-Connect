@@ -32,9 +32,7 @@ function App({ Component, pageProps }) {
         */}
       <PageTemplate>
         <Component {...pageProps} />
-       
       </PageTemplate>
-      
     </>
   );
 }

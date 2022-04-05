@@ -2,18 +2,7 @@ import { Button } from "@mui/material";
 import Link from "next/link";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Typography } from "@mui/material";
-
-function sidebarHandler(e) {
-  e.preventDefault();
-  /*
-  
-  Change State To Activate Sidebar
-
-  MUI has a library/component is utilities that will allow for off clicking
-  https://mui.com/components/click-away-listener/ <--- Find Here!
-
-  */
-}
+import DrawerButton from "./DrawerButton";
 
 export default function Header() {
   return (
@@ -52,14 +41,15 @@ export default function Header() {
               color="neutral"
               variant="contained"
               href="/login"
-              style={{ color: "#fff" }}
+              style={{ color: "#fff", float: "left" }}
             >
               LOGIN
             </Button>
-            <MenuIcon
-              onClick={{ sidebarHandler }}
-              style={{ color: "#fff", marginLeft: "30px", fontSize: "36px" }}
-            />
+            <DrawerButton anchor="right" element={<></>}>
+              <MenuIcon
+                style={{ color: "#fff", marginLeft: "30px", fontSize: "36px" }}
+              />
+            </DrawerButton>
           </div>
         </div>
       </div>
