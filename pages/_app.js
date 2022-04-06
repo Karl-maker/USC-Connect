@@ -2,6 +2,7 @@
 
 import "../styles/globals.css";
 import PageTemplate from "../components/template";
+import { ContextProvider } from "../context/context_provider";
 
 // Next.js has components for many HTML elements. Make sure to check their documentation before doing anything major
 
@@ -30,9 +31,11 @@ function App({ Component, pageProps }) {
           Below is where all the files in the pages folder will render.
           So we wrap this in whatever code we would want globally in the code (Example: Header, Footer, Navigation, Context)
         */}
-      <PageTemplate>
-        <Component {...pageProps} />
-      </PageTemplate>
+      <ContextProvider>
+        <PageTemplate>
+          <Component {...pageProps} />
+        </PageTemplate>
+      </ContextProvider>
     </>
   );
 }

@@ -21,20 +21,22 @@ export default function Home() {
       className={style.specialScreen}
     >
       <div className={style.WelcomeDialogue}>
-        <h1 className={style.WelcomeText}>
-          Connecting <div>Our</div>
-          <div style={{ color: "#e7b617" }}>Students</div> Together
-        </h1>
-        <Button
-          className="mt-5"
-          href="/register"
-          size="medium"
-          color="neutral"
-          variant="contained"
-          style={{ color: "#fff", textAlign: "center" }}
-        >
-          Create An Account
-        </Button>
+        <div className="text-center">
+          <h1 className={style.WelcomeText}>
+            Connecting <div>Our</div>
+            <div style={{ color: "#e7b617" }}>Students</div> Together
+          </h1>
+          <Button
+            className="mt-5"
+            href="/register"
+            size="medium"
+            color="neutral"
+            variant="contained"
+            style={{ color: "#fff", textAlign: "center" }}
+          >
+            Create An Account
+          </Button>
+        </div>
       </div>
     </div>
   );

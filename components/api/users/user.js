@@ -1,67 +1,66 @@
 import axios from "axios";
-import Connect from "../Connect"
+import Connect from "../Connect";
+import { Chip, Avatar } from "@mui/material";
 
-export default class user extends Connect{
-    constructor(url, access_token, {}){
-        super(url, access_token);
+export default class user extends Connect {
+  constructor(url, access_token, {}) {
+    super(url, access_token);
 
-        this.id;
-        this.first_name;
-        this.last_name;
-        this.email;
-        this.IsLoggedIn = false;
-        this.IsAdmin = false;
-       
-    }
+    this.id;
+    this.first_name;
+    this.last_name;
+    this.email;
+    this.logged_in = false;
+    this.access_token = access_token;
+  }
 
-//Getters
-get id(){
+  //Getters
+  get id() {
     return this._id;
-}
+  }
 
-get first_name(){
+  get first_name() {
     return this._first_name;
-}
+  }
 
-get last_name(){
+  get last_name() {
     return this._last_name;
-}
+  }
 
-get email(){
+  get email() {
     return this._email;
-}
+  }
 
-get IsLoggedIn(){
-    return this._IsLoggedIn;
-}
+  get logged_in() {
+    return this._logged_in;
+  }
 
-get IsAdmin(){
-    this._IsAdmin;
-}
+  set logged_in(logged_in) {
+    this._logged_in = this.logged_in;
+  }
 
-set IsLoggedIn(IsLoggedIn){
-    this._IsLoggedIn = this.IsLoggedIn;
-}
+  //Methods
+  displayProfilePicture(size) {
+    return (
+      <Avatar>
+        {this.first_name.toUpperCase().charAt(0) ||
+          this._email.toUpperCase().charAt(0)}
+      </Avatar>
+    );
+  }
 
-set IsAdmin(IsAdmin){
-    this._IsAdmin = this.IsAdmin;
-}
-
-//Methods
-async GetCurrentUser(){
-    const result = await axios.get(`${this.url}/api/user`, 
-    {headers: {Authorization: `Bearer ${this.access_token}`},});
-
-    if (result.status === 200){
-        this.id = result.data[0].id;
-        this.first_name = result.data[0].first_name;
-        this.last_name = result.data[0].last_name;
-        return true;
-    }
-    return false;
-}
-
-
-
-
+  displayProfileChip({ borderWidth }) {
+    return (
+      <>
+        <Chip
+          avatar={this.displayProfilePicture(23)}
+          variant="outlined"
+          sx={{
+            borderWidth,
+          }}
+          label={`${this.first_name || this._email} ${this.last_name || ""}`}
+        />
+      </>
+    );
+  }
 }
