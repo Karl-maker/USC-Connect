@@ -37,37 +37,57 @@ export default class Student extends User {
 
   //Methods
 
-  async getCurrentInfo(id) {
-    const result = await axios.get(`${this.url}/api/student`);
-    this.first_name = result.data[0].first_name;
-    this.last_name = result.data[0].last_name;
-    this.email = result.data[0].email;
-    this.is_Confirmed = result.data[0].is_Confirmed;
-    this.campus_name = result.data[0].campus_name;
-    this.department_id = result.data[0].department_id;
-
-    return result.data[0];
-  }
-
-  async login(email, password) {
-    try {
-      const result = await axios.post(`${this.Url}/api/student/login`, {
-        email,
-        password,
+  async getCurrentUserInfo() {
+    return fetch(`${this.url}/api/student`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${this._access_token}`,
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((result) => {
+        if (result.email) {
+          this._first_name = result.first_name;
+          this._last_name = result.last_name;
+          this._email = result.email;
+          this._logged_in = true;
+        } else {
+          throw { message: "Issue" };
+        }
+      })
+      .catch((error) => {
+        console.log(error);
       });
+  }
+  async login(email, password) {
+    return fetch(`${this.url}/api/student/login`, {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email: email, password: password }),
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        if (response.access_token) {
+          const student = response.student;
 
-      if (result === 200) {
-        //access token to be added
-        await this.GetCurrentUser(id);
+          this._student_id = student.student_id;
+          this._email = student.email;
+          this._first_name = student.first_name;
+          this._last_name = student.last_name;
+          this._id = student._id;
+          this._logged_in = true;
 
-        this.IsLoggedIn = true;
-
-        return result;
-      }
-    } catch (err) {
-      console.log(err);
-      return err;
-    }
+          return true;
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   async authenticate() {
@@ -75,7 +95,7 @@ export default class Student extends User {
      * Credentials need to be included to get the refresh token as a cookie
      */
 
-    fetch(`${this.url}/api/student/authenticate`, {
+    return fetch(`${this.url}/api/student/authenticate`, {
       method: "POST",
       credentials: "include",
       headers: {
@@ -85,11 +105,16 @@ export default class Student extends User {
       .then((response) => response.json())
       .then((response) => {
         // get access_token and place in code
-        console.log(response);
+
+        if (response.access_token) {
+          this._access_token = response.access_token;
+          return true;
+        } else {
+          return false;
+        }
       })
       .catch((err) => {
-        console.log(err);
-        throw err;
+        return false;
       });
   }
 

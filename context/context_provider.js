@@ -6,8 +6,8 @@ import Admin from "../components/api/users/admin";
 export const UserContext = createContext({});
 
 export function ContextProvider({ children }) {
-  const student = new Student();
-  const admin = new Admin();
+  const [student, setStudent] = useState(new Student());
+  const [admin, setAdmin] = useState(new Admin());
   const [user, setUser] = useState({ logged_in: false });
   const [loading, setLoading] = useState(true);
 
@@ -18,34 +18,23 @@ export function ContextProvider({ children }) {
   */
 
   useEffect(() => {
-    (async function () {
-      // Check if student is authenticated
-      try {
-        await student.authenticate();
-        if (student.logged_in) {
-          setUser(student);
-          setLoading(false);
-          return;
-        }
-      } catch (err) {
-        console.log(err);
-      }
+    //Attempt to login
 
-      // Check if administrator is authenticated
-      try {
-        await admin.authenticate();
-        if (admin.logged_in) {
-          setUser(admin);
-          setLoading(false);
-          return;
-        }
-      } catch (err) {
-        console.log(err);
+    student.authenticate().then((result) => {
+      if (result) {
+        // Get Student information
+        student
+          .getCurrentUserInfo()
+          .then(() => {
+            // Login user
+            student.logged_in = true;
+            setUser(student);
+            setLoading(false);
+          })
+          .catch((error) => {});
       }
-
-      setLoading(false);
-    })();
-  });
+    });
+  }, []);
 
   return (
     <Loading loading={loading}>

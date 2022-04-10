@@ -2,16 +2,16 @@ import axios from "axios";
 import Connect from "../Connect";
 import { Chip, Avatar } from "@mui/material";
 
-export default class user extends Connect {
+export default class User extends Connect {
   constructor(url, access_token, {}) {
     super(url, access_token);
 
-    this.id;
-    this.first_name;
-    this.last_name;
-    this.email;
-    this.logged_in = false;
-    this.access_token = access_token;
+    this._id;
+    this._first_name;
+    this._last_name;
+    this._email;
+    this._logged_in = false;
+    this._access_token = access_token;
   }
 
   //Getters

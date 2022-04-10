@@ -21,17 +21,9 @@ export default function Header() {
       >
         <div className="row m-4">
           <div className="col-lg-10 col-md-10 col-6" style={{ color: "#fff" }}>
-            <Link href="/" passHref>
-              {/* Link is like an a tag, and passHref is used link within components*/}
-              <Typography
-                style={{ fontWeight: "bold" }}
-                variant="h5"
-                gutterBottom
-                component="div"
-              >
-                USC CONNECT
-              </Typography>
-            </Link>
+            <DrawerButton anchor="left" element={<></>}>
+              <MenuIcon style={{ color: "#fff", fontSize: "36px" }} />
+            </DrawerButton>
           </div>
           <div className="col-lg-2 col-md-2 col-6 text-end">
             {/*
@@ -41,26 +33,22 @@ export default function Header() {
         */}
 
             {UserService.user.logged_in ? (
-              <>
+              <div href="/events">
                 {UserService.user.displayProfileChip({
                   borderWidth: "1px",
                 })}
-              </>
+              </div>
             ) : (
               <Button
                 className="p-1"
                 size="medium"
                 color="neutral"
                 variant="contained"
-                href="/login"
-                style={{ color: "#fff", float: "left" }}
+                href="/student_login"
               >
                 LOGIN
               </Button>
             )}
-            <DrawerButton anchor="right" element={<></>}>
-              <MenuIcon style={{ color: "#fff", fontSize: "36px" }} />
-            </DrawerButton>
           </div>
         </div>
       </div>

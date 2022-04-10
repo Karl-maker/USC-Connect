@@ -8,6 +8,7 @@ import { ContextProvider } from "../context/context_provider";
 
 import Head from "next/head";
 import Script from "next/script";
+import RouteGuard from "../components/template/pageguard";
 
 function App({ Component, pageProps }) {
   return (
@@ -33,7 +34,9 @@ function App({ Component, pageProps }) {
         */}
       <ContextProvider>
         <PageTemplate>
-          <Component {...pageProps} />
+          <RouteGuard pageProps={pageProps}>
+            <Component {...pageProps} />
+          </RouteGuard>
         </PageTemplate>
       </ContextProvider>
     </>

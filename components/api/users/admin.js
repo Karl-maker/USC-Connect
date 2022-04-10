@@ -14,7 +14,7 @@ export default class Admin extends User {
      * Credentials need to be included to get the refresh token as a cookie
      */
 
-    fetch(`${this.url}/api/administrator/authenticate`, {
+    return fetch(`${this.url}/api/administrator/authenticate`, {
       method: "POST",
       credentials: "include",
       headers: {
@@ -24,41 +24,74 @@ export default class Admin extends User {
       .then((response) => response.json())
       .then((response) => {
         // get access_token and place in code
-        console.log(response);
+
+        if (response.access_token) {
+          this._access_token = response.access_token;
+          return true;
+        } else {
+          return false;
+        }
       })
       .catch((err) => {
-        console.log(err);
-        throw err;
+        return false;
       });
   }
 
   //Methods
-  async GetUserInfo(id) {
-    const result = await axios.get(`${this.Url}/api/user${id || this.id} `);
-    this.first_name = result.data[0].first_name;
-    this.last_name = result.data[0].last_name;
-    this.email = result.data[0].email;
-    this.IsAdmin = result.data[0].IsAdmin;
-    this.phone_num = result.data[0].phone_num;
-
-    return result.data[0];
+  async getCurrentUserInfo() {
+    return fetch(`${this.url}/api/administration`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${this._access_token}`,
+        "Content-Type": "application/json",
+      },
+    })
+      .then((response) => response.json())
+      .then((result) => {
+        if (result.email) {
+          this._first_name = result.first_name;
+          this._last_name = result.last_name;
+          this._email = result.email;
+          this._logged_in = true;
+        } else {
+          throw { message: "Issue" };
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
-  async Login(id, password) {
+  async login(email, password) {
+    console.log(email, password);
     try {
-      const result = await axios.post(`${this.url}/api/login`, {
-        id,
-        password,
-      });
+      return fetch(`${this.url}/api/administrator/login`, {
+        method: "POST",
+        credentials: "include",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email: email, password: password }),
+      })
+        .then((response) => response.json())
+        .then((response) => {
+          console.log(response);
+          if (response.access_token) {
+            const administrator = response.administrator;
 
-      if (result === 200) {
-        //access token to be added
-        await this.GetCurrentUser(id);
+            this._email = administrator.email;
+            this._first_name = administrator.first_name;
+            this._last_name = administrator.last_name;
+            this._id = administrator._id;
+            this._logged_in = true;
 
-        this.IsLoggedIn = true;
-
-        return result;
-      }
+            return true;
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     } catch (err) {
       console.log(err);
       return err;
