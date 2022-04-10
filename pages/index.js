@@ -1,5 +1,9 @@
 import { Button } from "@mui/material";
 import style from "../styles/modules/home.module.css";
+import { useRouter } from "next/router";
+import { useContext } from "react";
+import { UserContext } from "../context/context_provider";
+import RedirectGuard from "../components/template/redirectguard";
 
 /*
 
@@ -12,6 +16,8 @@ read here for more info: https://nextjs.org/docs/basic-features/built-in-css-sup
 */
 
 export default function Home() {
+  const UserService = useContext(UserContext);
+
   return (
     <div
       style={{
@@ -26,16 +32,18 @@ export default function Home() {
             Connecting <div>Our</div>
             <div style={{ color: "#e7b617" }}>Students</div> Together
           </h1>
-          <Button
-            className="mt-5"
-            href="/register"
-            size="medium"
-            color="neutral"
-            variant="contained"
-            style={{ color: "#fff", textAlign: "center" }}
-          >
-            Create An Account
-          </Button>
+          {!UserService.user.logged_in && (
+            <Button
+              className="mt-5"
+              href="/register"
+              size="medium"
+              color="neutral"
+              variant="contained"
+              style={{ color: "#fff", textAlign: "center" }}
+            >
+              Create An Account
+            </Button>
+          )}
         </div>
       </div>
     </div>

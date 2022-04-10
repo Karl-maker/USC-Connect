@@ -3,7 +3,7 @@ import Connect from "../Connect";
 import { Chip, Avatar } from "@mui/material";
 
 export default class User extends Connect {
-  constructor(url, access_token, {}) {
+  constructor(url, access_token, { is_admin }) {
     super(url, access_token);
 
     this._id;
@@ -12,9 +12,14 @@ export default class User extends Connect {
     this._email;
     this._logged_in = false;
     this._access_token = access_token;
+    this._is_admin = is_admin || false;
   }
 
   //Getters
+  get is_admin() {
+    return this._is_admin;
+  }
+
   get id() {
     return this._id;
   }
@@ -54,7 +59,6 @@ export default class User extends Connect {
       <>
         <Chip
           avatar={this.displayProfilePicture(23)}
-          variant="outlined"
           sx={{
             borderWidth,
             color: color || "#ffff",

@@ -118,6 +118,20 @@ export default class Student extends User {
       });
   }
 
+  async logout() {
+    try {
+      await axios.delete(`${this.url}/api/student/authenticate`, {
+        withCredentials: true,
+      });
+
+      this._logged_in = false;
+
+      return;
+    } catch (err) {
+      return;
+    }
+  }
+
   async register(email, password, first_name, last_name, id, campus_name) {
     const result = await axios.post(`${this.url}/api/student/register`, {
       email,

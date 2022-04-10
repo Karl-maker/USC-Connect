@@ -4,6 +4,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { Typography } from "@mui/material";
 import DrawerButton from "./drawerbutton";
 import { useContext } from "react";
+import SideBar from "./sidebar";
 import { UserContext } from "../../context/context_provider";
 
 export default function Header() {
@@ -23,7 +24,7 @@ export default function Header() {
       >
         <div className="row m-4">
           <div className="col-lg-10 col-md-10 col-6" style={{ color: "#fff" }}>
-            <DrawerButton anchor="left" element={<></>}>
+            <DrawerButton anchor="left" element={<SideBar />}>
               <MenuIcon style={{ color: "#fff", fontSize: "36px" }} />
             </DrawerButton>
           </div>
@@ -35,9 +36,10 @@ export default function Header() {
         */}
 
             {UserService.user.logged_in ? (
-              <div href="/events">
+              <div>
                 {UserService.user.displayProfileChip({
                   borderWidth: "0.5px",
+                  color: "black",
                 })}
               </div>
             ) : (

@@ -17,23 +17,71 @@ export function ContextProvider({ children }) {
 
   */
 
-  useEffect(() => {
+  const studentSetup = () => {
+    return student
+      .authenticate()
+      .then((result) => {
+        if (result) {
+          // Get Student information
+          student
+            .getCurrentUserInfo()
+            .then(() => {
+              // Login user
+              student.logged_in = true;
+              setUser(student);
+              setLoading(false);
+
+              return true;
+            })
+            .catch((error) => {
+              setLoading(false);
+              return false;
+            });
+        }
+
+        return false;
+      })
+      .catch((error) => {
+        return false;
+      });
+  };
+
+  const administratorSetup = () => {
+    return admin
+      .authenticate()
+      .then((result) => {
+        if (result) {
+          // Get Student information
+          admin
+            .getCurrentUserInfo()
+            .then(() => {
+              // Login user
+
+              admin.logged_in = true;
+              setUser(admin);
+              setLoading(false);
+            })
+            .catch((error) => {
+              setLoading(false);
+            });
+        }
+
+        setLoading(false);
+      })
+      .catch((error) => {
+        setLoading(false);
+        return false;
+      });
+  };
+
+  useEffect(async () => {
     //Attempt to login
 
-    student.authenticate().then((result) => {
-      if (result) {
-        // Get Student information
-        student
-          .getCurrentUserInfo()
-          .then(() => {
-            // Login user
-            student.logged_in = true;
-            setUser(student);
-            setLoading(false);
-          })
-          .catch((error) => {});
-      }
-    });
+    // Try to login Student first
+
+    if (!(await studentSetup())) {
+      await administratorSetup();
+    }
   }, []);
 
   return (

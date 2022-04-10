@@ -4,7 +4,7 @@ const BACKEND_URL = process.env.BACKEND_URL;
 
 export default class Admin extends User {
   constructor() {
-    super(BACKEND_URL, null, {});
+    super(BACKEND_URL, null, { is_admin: true });
   }
 
   //Getters and Setters
@@ -39,7 +39,7 @@ export default class Admin extends User {
 
   //Methods
   async getCurrentUserInfo() {
-    return fetch(`${this.url}/api/administration`, {
+    return fetch(`${this.url}/api/administrator`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${this._access_token}`,
@@ -95,6 +95,20 @@ export default class Admin extends User {
     } catch (err) {
       console.log(err);
       return err;
+    }
+  }
+
+  async logout() {
+    try {
+      await axios.delete(`${this.url}/api/administrator/authenticate`, {
+        withCredentials: true,
+      });
+
+      this._logged_in = false;
+
+      return;
+    } catch (err) {
+      return;
     }
   }
 }

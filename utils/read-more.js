@@ -9,7 +9,7 @@ const ReadMore = ({ children, limit }) => {
   return (
     <p className="text">
       {isReadMore ? text.slice(0, limit) : text}
-      <span onClick={toggleReadMore}>
+      <span onClick={toggleReadMore} style={{ color: "#74b9ff" }}>
         {text.length > limit
           ? isReadMore
             ? "...read more"

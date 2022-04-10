@@ -1,5 +1,4 @@
 import Header from "./header";
-import SideBar from "./sidebar";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 const theme = createTheme({
@@ -21,7 +20,7 @@ export default function PageTemplate({ children }) {
 
             Theme provider provides all elements that are from MUI with theme data for colors and styling
           */}
-        <SideBar />
+
         <Header />
         {children}
       </ThemeProvider>

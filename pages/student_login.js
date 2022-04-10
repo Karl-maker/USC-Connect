@@ -28,7 +28,7 @@ function StudentLogin() {
   const UserService = React.useContext(UserContext);
 
   if (loggedIn) {
-    const returnUrl = router.query.return_url || "/";
+    const returnUrl = router.query.return_url || "/events";
     router.push(returnUrl);
   }
 
