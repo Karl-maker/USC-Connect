@@ -17,6 +17,8 @@ export default function Header() {
           position: "fixed",
           backgroundColor: "transparent",
           width: "100%",
+          opacity: 0.99,
+          backdropFilter: "blur(20px)",
         }}
       >
         <div className="row m-4">
@@ -35,7 +37,7 @@ export default function Header() {
             {UserService.user.logged_in ? (
               <div href="/events">
                 {UserService.user.displayProfileChip({
-                  borderWidth: "1px",
+                  borderWidth: "0.5px",
                 })}
               </div>
             ) : (

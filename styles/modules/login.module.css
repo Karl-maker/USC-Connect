@@ -1,237 +1,226 @@
-.align{
-    text-align: center;
-  }
-    
-  .body{
-   
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: 50% 30%;
-      background-image: url("../../public/img/USC\ Connect\ Dark\ -\ Copy\ without\ SVG\ -\ No\ Circle.png");
-      
-  }
-    
-    .Loginarea {
-      background-color: rgba(252, 252, 252, 0.185);
-      border-width: 5%;
-      border-style:groove;
-      padding-top: 5%;
-      padding-bottom: 5%;
-    }
-    
-  
-    .previewtext{
-      color: aliceblue;
-      font-family: 'Source Code Pro', monospace;
-    }
-  
-    .header{
-      border-style: solid;
-      background-color: #25D366;
-      text-align: center;
-      font-family: 'Work Sans', sans-serif;
-    }
-  
-    .newchatview{
-      font-family: 'Fira Sans', sans-serif;
+.align {
+  text-align: center;
+}
+
+.body {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 30%;
+  background-image: url("../../public/img/USC\ Connect\ Dark\ -\ Copy\ without\ SVG\ -\ No\ Circle.png");
+}
+
+.Loginarea {
+  background-color: rgba(252, 252, 252, 0.185);
+  border-width: 5%;
+  border-style: groove;
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+
+.previewtext {
+  color: aliceblue;
+  font-family: "Source Code Pro", monospace;
+}
+
+.header {
+  border-style: solid;
+  background-color: #25d366;
+  text-align: center;
+  font-family: "Work Sans", sans-serif;
+}
+
+.newchatview {
+  font-family: "Fira Sans", sans-serif;
   font-size: 1.5em;
   color: #fff;
-        float:right;
-        margin-left: 250px; 
-        width:82%;
-        height:94.9%;
-        position:fixed;
-        border:1px; 
-        overflow:auto;
-        background-color: #2C2F33;
-        border-radius: 10px;
-        border-style: solid;
-        border-color: #dddddd;
-        text-align: center;
-    }
-  
-    .button1{
-      justify-content: center;
-      appearance: none;
-      outline: 0;
-      background-color: lightseagreen;
-      border: 0;
-      padding: 10px 15px;
-      color: white;
-      border-radius: 3px;
-      width: 250px;
-      cursor: pointer;
-      font-size: 26px;
-    }
-  
-  .sendersent{
-  background-color:#075E54;
-   border:3px solid#075E54;
-    margin: 10px 5px;
+  float: right;
+  margin-left: 250px;
+  width: 82%;
+  height: 94.9%;
+  position: fixed;
+  border: 1px;
+  overflow: auto;
+  background-color: #2c2f33;
+  border-radius: 10px;
+  border-style: solid;
+  border-color: #dddddd;
+  text-align: center;
+}
+
+.button1 {
+  justify-content: center;
+  appearance: none;
+  outline: 0;
+  background-color: lightseagreen;
+  border: 0;
+  padding: 10px 15px;
+  color: white;
+  border-radius: 3px;
+  width: 250px;
+  cursor: pointer;
+  font-size: 26px;
+}
+
+.sendersent {
+  background-color: #075e54;
+  border: 3px solid #075e54;
+  margin: 10px 5px;
   text-align: right;
-  }
-  .friendsent{
-    background-color: #657786;
-    border: 3px solid #657786;
-    margin: 10px 5px;
+}
+.friendsent {
+  background-color: #657786;
+  border: 3px solid #657786;
+  margin: 10px 5px;
   text-align: left;
-  }
-  .chatlist{
-    background-color: #222831;
-    position: fixed;
-    left: 0;
-    top: 0;
-    border-style: double;
-    bottom: 0;
-    overflow: auto;
-  }
-   .chat{
-     position: fixed;
-     width: 80%;
-     margin-left: 250px;
-     height: 40px;
-     bottom: 0px;
-     background-color: #ddd;
-    
-   } 
-  
-   
-    /* FORM ELEMENTS */
-    .container {
-      margin: 20px;
-      padding: 80px 0;
-      text-align: center;
-    }
-    .sendBtn{
-      position: fixed;
-      right: 0px;
-      height:50px;
-      bottom:0%;
-      float: right;
-      border-radius: 8px;
-      appearance: none;
-      
-      background-color: #4ea4dc;
-     
-      padding: 14px 15px;
-      color: #fff;
-      width: 7%;
-      font-size: 18px;
-      display: block;
-      cursor:pointer;
-      margin: 0px auto 0px auto;
-      
-    }
-  
-    .form {
-      padding: 30px 0;
-      position: relative;
-    }
-    .input {
-      border: 1px solid rgba(252, 252, 252, 0.4);
-      background-color: rgba(252, 252, 252, 0.2);
-      width: 250px;
-      
-      font-family: "Source Sans Pro", sans-serif;
-      padding: 15px 15px;
-      margin: 0 auto 15px auto;
-      display: block;
-      text-align: center;
-      font-size: 18px;
-      
-      font-weight: 300;
-    }
-    .link{
-      color: blue;
-    }
-    .SignOutbtn{
-    left: 0;
-      position:fixed;
-      appearance: none;
-      outline: 0;
-      bottom:0;
-      background-color:#c70039;
-      cursor: pointer;
-      padding: 10px 15px;
-      color: white;
-      border-radius: 3px;
-      width: 250px;
-      font-size: 26px;
-      
-    }
-    .SignOutbtn:hover{
-      background-color: crimson;
-    }
-    .listeduser{
-      cursor: pointer;
-    }
-    .listeduser:hover{
-      background-color: #dddddd;
-    }
-   .friends{
-     
-     margin-bottom: 3%;
-     
-   }
-  .chatview{
-    font-family: 'Fira Sans', sans-serif;
+}
+.chatlist {
+  background-color: #222831;
+  position: fixed;
+  left: 0;
+  top: 0;
+  border-style: double;
+  bottom: 0;
+  overflow: auto;
+}
+.chat {
+  position: fixed;
+  width: 80%;
+  margin-left: 250px;
+  height: 40px;
+  bottom: 0px;
+  background-color: #ddd;
+}
+
+/* FORM ELEMENTS */
+.container {
+  margin: 20px;
+  padding: 80px 0;
+  text-align: center;
+}
+.sendBtn {
+  position: fixed;
+  right: 0px;
+  height: 50px;
+  bottom: 0%;
+  float: right;
+  border-radius: 8px;
+  appearance: none;
+
+  background-color: #4ea4dc;
+
+  padding: 14px 15px;
+  color: #fff;
+  width: 7%;
+  font-size: 18px;
+  display: block;
+  cursor: pointer;
+  margin: 0px auto 0px auto;
+}
+
+.form {
+  padding: 30px 0;
+  position: relative;
+}
+.input {
+  border: 1px solid rgba(252, 252, 252, 0.4);
+  background-color: rgba(252, 252, 252, 0.2);
+  width: 250px;
+
+  font-family: "Source Sans Pro", sans-serif;
+  padding: 15px 15px;
+  margin: 0 auto 15px auto;
+  display: block;
+  text-align: center;
+  font-size: 18px;
+
+  font-weight: 300;
+}
+.link {
+  color: blue;
+}
+.SignOutbtn {
+  left: 0;
+  position: fixed;
+  appearance: none;
+  outline: 0;
+  bottom: 0;
+  background-color: #c70039;
+  cursor: pointer;
+  padding: 10px 15px;
+  color: white;
+  border-radius: 3px;
+  width: 250px;
+  font-size: 26px;
+}
+.SignOutbtn:hover {
+  background-color: crimson;
+}
+.listeduser {
+  cursor: pointer;
+}
+.listeduser:hover {
+  background-color: #dddddd;
+}
+.friends {
+  margin-bottom: 3%;
+}
+.chatview {
+  font-family: "Fira Sans", sans-serif;
   font-size: 1.5em;
   color: #fff;
-        float:right;
-        margin-left: 250px; 
-        width:82%;
-        height:94.9%;
-        position:fixed;
-        border:1px; 
-        overflow:auto;
-        background-color: #2C2F33;
-    
-  }
-  
-    .chatlistuser{
-      font-family: 'Work Sans', sans-serif;
-      clear: left;
-      color: #faf6e9;
-    }
-  
-   
-    .avatar{
-      border: 1px solid #ddd;
-    border-radius: 4px;
-    padding: 5px;
-    width: 100px;
-    float: left;
-    clear: left;
-    }
-    .NewChatBtn{
-      appearance: none;
-      outline: 0;
-      border: 0;
-      padding: 10px 15px;
-      color: white;
-      border-radius: 3px;
-      width: 250px;
-      font-size: 26px;
-      background-color: #30475e;
-      cursor: pointer;
-    }
-    .NewChatBtn:hover{
-      background-color: #a3d2ca;
-    }
-    .button {
-      appearance: none;
-      outline: 0;
-      background-color: lightseagreen;
-      border: 0;
-      padding: 10px 15px;
-      color: white;
-      border-radius: 3px;
-      width: 250px;
-      cursor: pointer;
-      font-size: 26px;
-    }
-  
-    .preview{
-      font-family: 'Crimson Text', serif;
-      color:#faf6e9;
-    }
+  float: right;
+  margin-left: 250px;
+  width: 82%;
+  height: 94.9%;
+  position: fixed;
+  border: 1px;
+  overflow: auto;
+  background-color: #2c2f33;
+}
+
+.chatlistuser {
+  font-family: "Work Sans", sans-serif;
+  clear: left;
+  color: #faf6e9;
+}
+
+.avatar {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  width: 100px;
+  float: left;
+  clear: left;
+}
+.NewChatBtn {
+  appearance: none;
+  outline: 0;
+  border: 0;
+  padding: 10px 15px;
+  color: white;
+  border-radius: 3px;
+  width: 250px;
+  font-size: 26px;
+  background-color: #30475e;
+  cursor: pointer;
+}
+.NewChatBtn:hover {
+  background-color: #a3d2ca;
+}
+.button {
+  appearance: none;
+  outline: 0;
+  background-color: lightseagreen;
+  border: 0;
+  padding: 10px 15px;
+  color: white;
+  border-radius: 3px;
+  width: 250px;
+  cursor: pointer;
+  font-size: 26px;
+}
+
+.preview {
+  font-family: "Crimson Text", serif;
+  color: #faf6e9;
+}

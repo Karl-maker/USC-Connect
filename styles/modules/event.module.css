@@ -1,0 +1,22 @@
+.body {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 30%;
+  background-image: url("../../public/img/USC\ Connect\ Dark\ -\ Copy\ without\ SVG\ -\ No\ Circle.png");
+}
+
+.widget {
+  background-color: #ffff;
+  opacity: 1;
+  padding: 10px;
+  border-radius: 15px;
+  border: 0px solid;
+  border-color: transparent;
+}
+
+.description {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

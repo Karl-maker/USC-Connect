@@ -49,7 +49,7 @@ export default class User extends Connect {
     );
   }
 
-  displayProfileChip({ borderWidth }) {
+  displayProfileChip({ borderWidth, color }) {
     return (
       <>
         <Chip
@@ -57,6 +57,7 @@ export default class User extends Connect {
           variant="outlined"
           sx={{
             borderWidth,
+            color: color || "#ffff",
           }}
           label={`${this.first_name || this._email} ${this.last_name || ""}`}
         />

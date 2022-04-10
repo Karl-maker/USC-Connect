@@ -1,10 +1,16 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import environment from "../next.config";
+import style from "../styles/modules/event.module.css";
+import Loading from "../components/template/loading";
+import EventWidget from "../components/widgets/events/EventWidget";
+import Event from "../components/api/events/Events";
 
 export default function Events() {
-  const [items, setItems] = useState();
+  const [events, setEvents] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [pageNumber, setPageNumber] = useState(0);
+  const [campus, setCampus] = useState("");
 
   useEffect(() => {
     // Everytime webpage refreshes this function is called
@@ -18,36 +24,73 @@ export default function Events() {
 
     (async function fetchRequest() {
       const result = await axios.get(
-        `${environment.env.BACKEND_URL}/api/events?page_size=10&page_number${pageNumber}`
+        `${environment.env.BACKEND_URL}/api/events?page_size=10&page_number${pageNumber}&campus_name=${campus}`
       );
-      setItems(result.data);
+
+      // Change into classes first..
+
+      for (let i = 0; i < result.data.length; i++) {
+        setEvents((event) => [...event, new Event(result.data[i])]);
+      }
+      setLoading(false);
     })();
-  }, [pageNumber]);
+  }, [pageNumber, campus]);
 
   return (
-    <div style={{ backgroundColor: "green", height: "100vh", width: "100vw" }}>
-      {
-        // Style lists of events
-      }
-      {items ? (
-        <ul>
-          {items.map((data) => (
-            <li
-              key={data.name}
+    <Loading loading={loading}>
+      <div className="row">
+        <div className="col-6">
+          {/*
+
+        Drop down menu for campuses
+
+        */}
+        </div>
+        <div className="col-6">
+          {/*
+
+        Page selection
+
+        */}
+        </div>
+      </div>
+      <div>
+        <div
+          className={style.body}
+          style={{
+            height: "100vh",
+            maxHeight: "100vh",
+            width: "100vw",
+            paddingTop: "80px",
+            overflow: "hidden",
+            overflowY: "scroll",
+          }}
+        >
+          {
+            // Style lists of events
+          }
+          {events ? (
+            <ul
               style={{
-                backgroundColor: "yellow",
-                margin: "10px",
-                borderRadius: "5px",
+                paddingLeft: "0px",
               }}
             >
-              <div>{data.name}</div>
-              <div>{data.description}</div>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <></>
-      )}
-    </div>
+              {events.map((event) => (
+                <li
+                  key={event.id}
+                  style={{
+                    margin: "10px",
+                  }}
+                >
+                  <EventWidget event={event} />
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <></>
+          )}
+        </div>
+      </div>
+    </Loading>
   );
 }
