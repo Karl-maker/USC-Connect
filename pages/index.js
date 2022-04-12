@@ -3,7 +3,6 @@ import style from "../styles/modules/home.module.css";
 import { useRouter } from "next/router";
 import { useContext } from "react";
 import { UserContext } from "../context/context_provider";
-import RedirectGuard from "../components/template/redirectguard";
 
 /*
 
