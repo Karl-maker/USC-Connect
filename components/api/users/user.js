@@ -1,6 +1,7 @@
 import axios from "axios";
 import Connect from "../Connect";
 import { Chip, Avatar } from "@mui/material";
+import Link from "next/link";
 
 export default class User extends Connect {
   constructor(url, access_token, { is_admin }) {
@@ -54,18 +55,19 @@ export default class User extends Connect {
     );
   }
 
-  displayProfileChip({ borderWidth, color }) {
+  displayProfileChip({ borderWidth, color, variant }) {
     return (
-      <>
+      <Link href={"/profile"} passHref>
         <Chip
+          variant={variant || "none"}
           avatar={this.displayProfilePicture(23)}
           sx={{
-            borderWidth,
+            borderWidth: borderWidth || "0px solid",
             color: color || "#ffff",
           }}
           label={`${this.first_name || this._email} ${this.last_name || ""}`}
         />
-      </>
+      </Link>
     );
   }
 }

@@ -6,6 +6,7 @@ import { HiLogout } from "react-icons/hi";
 import { MdCreate } from "react-icons/md";
 import { GrHomeRounded } from "react-icons/gr";
 import { FiHelpCircle } from "react-icons/fi";
+import { CgProfile } from "react-icons/cg";
 import {
   List,
   ListItem,
@@ -47,6 +48,16 @@ export default function SideBar() {
   return (
     <>
       <List>
+        {UserService.user.logged_in && (
+          <ListItem>
+            <ListItemText
+              primary={UserService.user.displayProfileChip({
+                color: "black",
+                variant: "outlined",
+              })}
+            />
+          </ListItem>
+        )}
         {menu.map((item, index) => (
           <ListItem
             button
@@ -66,26 +77,26 @@ export default function SideBar() {
             <ListItemText primary={item.label} />
           </ListItem>
         ))}
+        <ListItem
+          button
+          onClick={() => {
+            // Log user out
+
+            router.push("/help");
+          }}
+        >
+          <ListItemIcon>
+            {
+              // Icons come here
+            }
+            <FiHelpCircle />
+          </ListItemIcon>
+          <ListItemText primary={"Help"} />
+        </ListItem>
       </List>
       {UserService.user.logged_in && (
         <>
           <Divider />
-          <ListItem
-            button
-            onClick={() => {
-              // Log user out
-
-              router.push("/help");
-            }}
-          >
-            <ListItemIcon>
-              {
-                // Icons come here
-              }
-              <FiHelpCircle />
-            </ListItemIcon>
-            <ListItemText primary={"Help"} />
-          </ListItem>
           <ListItem
             button
             onClick={() => {

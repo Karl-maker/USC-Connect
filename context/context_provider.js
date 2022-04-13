@@ -82,6 +82,8 @@ export function ContextProvider({ children }) {
     if (!(await studentSetup())) {
       await administratorSetup();
     }
+
+    setLoading(false);
   }, []);
 
   return (
