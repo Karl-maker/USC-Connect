@@ -18,7 +18,7 @@ a:focus,
 a:active {
   text-decoration: underline;
   color: rgb(238, 191, 91);
-  cursor: pointer;
+  cursor: pointer; 
 }
 
 * {
