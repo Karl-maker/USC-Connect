@@ -1,19 +1,66 @@
-.WelcomeDialogue {
-  position: absolute;
-  top: 45%;
-  left: 70%;
-  transform: translate(-50%, -50%);
+@media only screen and (min-width: 700px) {
+  /*CSS For Desktop Screens*/
+  .specialScreen {
+    background-image: url("../../public/img/Home_Screen.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    background-position: 50% 30%;
+  }
+  .WelcomeText {
+    font-size: 350%;
+    color: #fff;
+    font-weight: bold;
+  }
+  .WelcomeDialogue {
+    position: absolute;
+    top: 45%;
+    left: 70%;
+    transform: translate(-50%, -50%);
+  }
 }
 
-.WelcomeText {
-  font-size: 350%;
-  color: #fff;
-  font-weight: bold;
+@media only screen and (max-width: 700px) {
+  /*CSS For Tablet Screens*/
+  .specialScreen {
+    background-image: url("../../public/img/Home_Screen.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    background-position: 35% 30%;
+  }
+  .WelcomeText {
+    font-size: 280%;
+    color: #fff;
+    font-weight: bold;
+  }
+  .WelcomeDialogue {
+    position: absolute;
+    top: 38%;
+    left: 78%;
+    transform: translate(-50%, -50%);
+  }
 }
 
-.specialScreen {
-  background-image: url("../../public/img/Home_screen.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: 50% 30%;
+@media only screen and (max-width: 450px) {
+  /*CSS for Mobile Devices*/
+  .WelcomeText {
+    font-size: 250%;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .specialScreen {
+    background-image: url("../../public/img/Main_Screen.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0% 10%;
+  }
+  .WelcomeDialogue {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 }
