@@ -99,6 +99,8 @@ function StudentLogin() {
               <button className={style.button} type="sumbit">
                 Log in
               </button>
+              <br/>
+              <br/>
               {/*Redirects the user to the Sign up page*/}
               <h4>Don't have an account?</h4>
 
