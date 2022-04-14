@@ -99,10 +99,11 @@ function AdminLogin() {
               <button className={style.button} type="sumbit">
                 Log in
               </button>
+              <br/>
+              <br/>
               {/*Redirects the user to the Sign up page*/}
               <h4>Don't have an account?</h4>
-
-              <h1>link</h1>
+              <h4><a className="SignupLink">Sign Up here</a></h1>
             </form>
             {
               //checks if there is an error while Logging in
