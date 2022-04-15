@@ -7,14 +7,24 @@
   background-size: cover;
   background-position: 50% 30%;
   background-image: url("../../public/img/USC\ Connect\ Dark\ -\ Copy\ without\ SVG\ -\ No\ Circle.png");
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  overflow-x: hidden; /* Hide horizontal scrollbar */
+}
+
+.body::-webkit-scrollbar {
+  display: none;
 }
 
 .Loginarea {
   background-color: rgba(252, 252, 252, 0.185);
   border-width: 5%;
-  border-style: groove;
-  padding-top: 5%;
-  padding-bottom: 5%;
+
+  padding-top: 100px;
+  padding-bottom: 100px;
+  margin-left: 0%;
+  margin-right: 0%;
+  border-radius: 10px;
 }
 
 .previewtext {
@@ -94,7 +104,7 @@
 /* FORM ELEMENTS */
 .container {
   margin: 20px;
-  padding: 80px 0;
+  padding: 20px 0;
   text-align: center;
 }
 .sendBtn {
@@ -124,15 +134,15 @@
 .input {
   border: 1px solid rgba(252, 252, 252, 0.4);
   background-color: rgba(252, 252, 252, 0.2);
-  width: 250px;
-
+  width: 100%;
+  height: 100%;
   font-family: "Source Sans Pro", sans-serif;
   padding: 15px 15px;
   margin: 0 auto 15px auto;
   display: block;
   text-align: center;
   font-size: 18px;
-
+  border-radius: 10px;
   font-weight: 300;
 }
 .link {
@@ -210,17 +220,49 @@
 .button {
   appearance: none;
   outline: 0;
-  background-color: lightseagreen;
+  background-color: rgb(25, 122, 38);
   border: 0;
   padding: 10px 15px;
   color: white;
-  border-radius: 3px;
-  width: 250px;
+  border-radius: 10px;
+  min-width: 50%;
   cursor: pointer;
-  font-size: 26px;
+  font-size: 15px;
+}
+
+.SignupLink {
+  text-decoration: underline;
+  color: #075e54;
 }
 
 .preview {
   font-family: "Crimson Text", serif;
   color: #faf6e9;
+}
+
+.mascot {
+  height: 250px;
+}
+
+@media only screen and (max-width: 720px) {
+  /*CSS for Mobile Devices*/
+
+  .body {
+    background-image: url("../../public/img/Main_Screen.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0% 10%;
+  }
+
+  .Loginarea {
+    padding: 20px;
+  }
+
+  .container {
+    padding: 60px 0;
+  }
+
+  .mascot {
+    height: 170px;
+  }
 }

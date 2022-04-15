@@ -1,7 +1,15 @@
-import Header from "./header";
+import Header from "./Header";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
+/*
+
+    Layout for entire webapp with the help of bootstrap and MUI
+
+*/
+
 const theme = createTheme({
+  // Give MUI elements a specific theme to help with the color scheme
+
   palette: {
     neutral: {
       main: "#eab718",

@@ -1,11 +1,15 @@
 import { Button } from "@mui/material";
-import Link from "next/link";
 import MenuIcon from "@mui/icons-material/Menu";
-import { Typography } from "@mui/material";
-import DrawerButton from "./drawerbutton";
+import DrawerButton from "./DrawerButton";
 import { useContext } from "react";
-import SideBar from "./sidebar";
-import { UserContext } from "../../context/context_provider";
+import SideBar from "./SideBar";
+import { UserContext } from "../../context/ContextProvider";
+
+/*
+ *
+ *   Stays ontop of browser as a header bar
+ *
+ */
 
 export default function Header() {
   const UserService = useContext(UserContext);
@@ -13,13 +17,14 @@ export default function Header() {
   return (
     <>
       <div
-        className="container-flush"
+        className="container-flush "
         style={{
           position: "fixed",
           backgroundColor: "transparent",
           width: "100%",
           opacity: 0.99,
           backdropFilter: "blur(20px)",
+          zIndex: 999,
         }}
       >
         <div className="row m-4">
@@ -31,7 +36,7 @@ export default function Header() {
           <div className="col-lg-2 col-md-2 col-6 text-end">
             {/*
         
-        Login Button shows if website state isn't logged In (public / visitor)
+        Login Button shows if website's user isn't logged in
 
         */}
 
@@ -48,7 +53,7 @@ export default function Header() {
                 size="medium"
                 color="neutral"
                 variant="contained"
-                href="/student_login"
+                href="/student-login"
               >
                 LOGIN
               </Button>

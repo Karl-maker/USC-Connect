@@ -1,14 +1,14 @@
 // Below CSS file is global and will affect the entire code
 
 import "../styles/globals.css";
-import PageTemplate from "../components/template";
-import { ContextProvider } from "../context/context_provider";
+import PageTemplate from "../components/template/PageTemplate";
+import { ContextProvider } from "../context/ContextProvider";
 
 // Next.js has components for many HTML elements. Make sure to check their documentation before doing anything major
 
 import Head from "next/head";
 import Script from "next/script";
-import RouteGuard from "../components/template/pageguard";
+import RouteGuard from "../components/template/PageGuard";
 
 function App({ Component, pageProps }) {
   return (

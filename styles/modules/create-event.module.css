@@ -3,4 +3,21 @@
   background-size: cover;
   background-position: 50% 30%;
   background-image: url("../../public/img/USC\ Connect\ Dark\ -\ Copy\ without\ SVG\ -\ No\ Circle.png");
+  overflow-x: hidden; /* Hide vertical scrollbar */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.body::-webkit-scrollbar {
+  display: none;
+}
+
+@media only screen and (max-width: 450px) {
+  /*CSS for Mobile Devices*/
+  .body {
+    background-image: url("../../public/img/Main_Screen.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0% 10%;
+  }
 }

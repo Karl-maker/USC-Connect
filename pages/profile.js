@@ -5,7 +5,7 @@ This page will be created to allow admin to create events
 */
 
 import { useState, useContext } from "react";
-import { UserContext } from "../context/context_provider";
+import { UserContext } from "../context/ContextProvider";
 
 export async function getStaticProps(context) {
   return {

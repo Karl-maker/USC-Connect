@@ -4,14 +4,15 @@ import { FormControl, InputLabel, Select, MenuItem, Card } from "@mui/material";
 import environment from "../next.config";
 import style from "../styles/modules/event.module.css";
 import Loading from "../components/template/Loading";
-import EventWidget from "../components/widgets/events/EventWidget";
 import Event from "../components/api/events/Events";
+import NoticeWidget from "../components/widgets/notices/NoticeWidget";
 
-export default function Events() {
+export default function Notice() {
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
   const [pageNumber, setPageNumber] = useState(0);
   const [campus, setCampus] = useState("Maracas Valley");
+  const [department, setDepartment] = useState("Science and Technology");
 
   useEffect(() => {
     // Everytime webpage refreshes this function is called
@@ -25,7 +26,7 @@ export default function Events() {
 
     (async function fetchRequest() {
       const result = await axios.get(
-        `${environment.env.BACKEND_URL}/api/events?page_size=10&page_number${pageNumber}&campus_name=${campus}&category=event`
+        `${environment.env.BACKEND_URL}/api/events?page_size=10&page_number${pageNumber}&campus_name=${campus}&category=notice&department=${department}`
       );
 
       // Change into classes first..
@@ -39,7 +40,7 @@ export default function Events() {
       setEvents(data);
       setLoading(false);
     })();
-  }, [pageNumber, campus]);
+  }, [pageNumber, campus, department]);
 
   return (
     <Loading loading={loading}>
@@ -55,8 +56,8 @@ export default function Events() {
         }}
       >
         <div className="container-fluid m-0 p-0" style={{}}>
-          <div className="row">
-            <div className="col-12 text-end mt-3 p-3">
+          <div className="row m-0 p-0">
+            <div className="col-12 text-end mt-3 p-0">
               <FormControl
                 variant="filled"
                 sx={{ marginRight: 2, bgcolor: "#ffff", borderRadius: 1 }}
@@ -74,6 +75,29 @@ export default function Events() {
                 >
                   <MenuItem value={"Maracas Valley"}>Maracas Valley</MenuItem>
                   <MenuItem value={"San Fernando"}>San Fernando</MenuItem>
+                </Select>
+              </FormControl>
+              <FormControl
+                variant="filled"
+                sx={{ marginRight: 2, bgcolor: "#ffff", borderRadius: 1 }}
+              >
+                <InputLabel id="demo-simple-select-label">
+                  Department
+                </InputLabel>
+                <Select
+                  labelId="demo-simple-select-label"
+                  id="demo-simple-select"
+                  value={department}
+                  label="Select Campus"
+                  size="small"
+                  onChange={(e) => {
+                    setDepartment(e.target.value);
+                  }}
+                >
+                  <MenuItem value={"Science and Technology"}>
+                    Science and Technology
+                  </MenuItem>
+                  <MenuItem value={"Education"}>Education</MenuItem>
                 </Select>
               </FormControl>
             </div>
@@ -98,7 +122,7 @@ export default function Events() {
                           margin: "0px",
                         }}
                       >
-                        <EventWidget event={event} />
+                        <NoticeWidget event={event} />
                       </li>
                     ))}
                   </ul>

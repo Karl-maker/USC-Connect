@@ -3,7 +3,10 @@ import { Drawer, ClickAwayListener, Box } from "@mui/material";
 
 /*
 
-This will be to create a sidebar
+  This will be used to slide any data needed
+
+  1. anchor: direction of sidebar (example: "left")
+  2. element: JSX within sidebar
 
 */
 

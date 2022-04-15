@@ -1,8 +1,3 @@
-import axios from "axios";
-/* 
-
-
-*/
 export default class Connect {
   constructor(url, access_token) {
     this.url = url;
@@ -24,13 +19,5 @@ export default class Connect {
 
   set Url(url) {
     this._url = url;
-  }
-
-  //Methods
-  async GetGeneral(url, body, config) {
-    const result = await axios.get(`${this.url}${url}`, body, {
-      headers: { Authorization: `Bearer ${this.access_token}` },
-      ...config,
-    });
   }
 }

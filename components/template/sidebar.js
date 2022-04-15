@@ -1,9 +1,10 @@
 import { useState, useContext, useEffect } from "react";
 import { useRouter } from "next/router";
-import { UserContext } from "../../context/context_provider";
-import { BsFillCalendarEventFill } from "react-icons/bs";
+import { UserContext } from "../../context/ContextProvider";
+import { BsCalendar } from "react-icons/bs";
 import { HiLogout } from "react-icons/hi";
-import { MdCreate } from "react-icons/md";
+import { AiOutlineNotification } from "react-icons/ai";
+import { GrAdd } from "react-icons/gr";
 import { GrHomeRounded } from "react-icons/gr";
 import { FiHelpCircle } from "react-icons/fi";
 import { CgProfile } from "react-icons/cg";
@@ -26,8 +27,13 @@ export default function SideBar() {
     },
     {
       label: "Events",
-      icon: <BsFillCalendarEventFill />,
+      icon: <BsCalendar />,
       link: "/events",
+    },
+    {
+      label: "Notifications",
+      icon: <AiOutlineNotification />,
+      link: "/notifications",
     },
   ]);
 
@@ -37,8 +43,8 @@ export default function SideBar() {
     if (UserService.user.is_admin) {
       setMenu(
         menu.concat({
-          label: "Add Event",
-          icon: <MdCreate />,
+          label: "Create",
+          icon: <GrAdd />,
           link: "/create-event",
         })
       );
@@ -49,15 +55,20 @@ export default function SideBar() {
     <>
       <List>
         {UserService.user.logged_in && (
-          <ListItem>
+          <ListItem onClick={() => router.push("/profile")}>
             <ListItemText
-              primary={UserService.user.displayProfileChip({
-                color: "black",
-                variant: "outlined",
-              })}
+              primary={UserService.user.displayProfilePicture(23)}
             />
           </ListItem>
         )}
+        <ListItem className="mt-2 mb-3">
+          <img
+            src={"/img/logo512.png"}
+            height={100}
+            style={{ margin: "auto" }}
+          />
+        </ListItem>
+
         {menu.map((item, index) => (
           <ListItem
             button

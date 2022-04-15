@@ -1,4 +1,3 @@
-import axios from "axios";
 import Connect from "../Connect";
 import { Chip, Avatar } from "@mui/material";
 import Link from "next/link";
@@ -19,6 +18,10 @@ export default class User extends Connect {
   //Getters
   get is_admin() {
     return this._is_admin;
+  }
+
+  get access_token() {
+    return this._access_token;
   }
 
   get id() {
@@ -45,10 +48,15 @@ export default class User extends Connect {
     this._logged_in = this.logged_in;
   }
 
+  set access_token(access_token) {
+    this._access_token = access_token;
+  }
+
   //Methods
+
   displayProfilePicture(size) {
     return (
-      <Avatar>
+      <Avatar sx={{ bgcolor: "#fdcb6e" }}>
         {this.first_name.toUpperCase().charAt(0) ||
           this._email.toUpperCase().charAt(0)}
       </Avatar>

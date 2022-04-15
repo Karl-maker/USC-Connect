@@ -1,5 +1,8 @@
 import { useEffect } from "react";
 import { useRouter } from "next/router";
+import Loading from "./Loading";
+
+// Helps control protecting pages
 
 export default function RedirectGuard({ children, condition, page }) {
   const router = useRouter();
@@ -12,5 +15,5 @@ export default function RedirectGuard({ children, condition, page }) {
     }
   }, [condition]);
 
-  return <>{children}</>;
+  return <Loading loading={!condition}>{children}</Loading>;
 }

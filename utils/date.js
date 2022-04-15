@@ -1,12 +1,12 @@
 export function checkHowManyDaysTill(first, second) {
   if ((second - first) / (1000 * 60) < 1) {
-    return `${Math.round((second - first) / 1000)} seconds`;
+    return `in ${Math.round((second - first) / 1000)} seconds`;
   } else if ((second - first) / (1000 * 60 * 60) < 1) {
-    return `${Math.round((second - first) / (1000 * 60))} minutes`;
+    return `in ${Math.round((second - first) / (1000 * 60))} minutes`;
   } else if ((second - first) / (1000 * 60 * 60 * 24) < 1) {
-    return `${Math.round((second - first) / (1000 * 60 * 60))} hours`;
+    return `in ${Math.round((second - first) / (1000 * 60 * 60))} hours`;
   } else if ((second - first) / (1000 * 60 * 60 * 24 * 31) < 1) {
-    return `${Math.round((second - first) / (1000 * 60 * 60 * 24))} days`;
+    return `in ${Math.round((second - first) / (1000 * 60 * 60 * 24))} days`;
   } else if ((second - first) / (1000 * 60 * 60 * 24 * 31 * 12) < 1) {
     return formatDate(second);
   } else if ((second - first) / (1000 * 60 * 60 * 24 * 31 * 12) > 1) {

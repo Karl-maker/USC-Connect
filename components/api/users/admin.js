@@ -1,13 +1,10 @@
-import axios from "axios";
-import User from "../users/user";
+import User from "./User";
 const BACKEND_URL = process.env.BACKEND_URL;
 
 export default class Admin extends User {
   constructor() {
     super(BACKEND_URL, null, { is_admin: true });
   }
-
-  //Getters and Setters
 
   async authenticate() {
     /*
@@ -21,7 +18,16 @@ export default class Admin extends User {
         "Content-type": "API-Key",
       },
     })
-      .then((response) => response.json())
+      .then((response) => {
+        // Check status code
+        if (response.status === 200) {
+          return response.json();
+        }
+
+        throw new Error({
+          message: response.json().message || "Issue authenticating",
+        });
+      })
       .then((response) => {
         // get access_token and place in code
 
@@ -37,7 +43,6 @@ export default class Admin extends User {
       });
   }
 
-  //Methods
   async getCurrentUserInfo() {
     return fetch(`${this.url}/api/administrator`, {
       method: "GET",
@@ -46,69 +51,90 @@ export default class Admin extends User {
         "Content-Type": "application/json",
       },
     })
-      .then((response) => response.json())
-      .then((result) => {
-        if (result.email) {
-          this._first_name = result.first_name;
-          this._last_name = result.last_name;
-          this._email = result.email;
-          this._logged_in = true;
-        } else {
-          throw { message: "Issue" };
+      .then((response) => {
+        // Check status code
+        if (response.status === 200) {
+          return response.json();
         }
+
+        throw new Error({
+          message: response.json().message || "Issue getting information",
+        });
+      })
+      .then((result) => {
+        this._id = result._id;
+        this._first_name = result.first_name;
+        this._last_name = result.last_name;
+        this._email = result.email;
+        this._logged_in = true;
+
+        return true;
       })
       .catch((error) => {
-        console.log(error);
+        return false;
       });
   }
 
   async login(email, password) {
-    console.log(email, password);
-    try {
-      return fetch(`${this.url}/api/administrator/login`, {
-        method: "POST",
-        credentials: "include",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email: email, password: password }),
-      })
-        .then((response) => response.json())
-        .then((response) => {
-          console.log(response);
-          if (response.access_token) {
-            const administrator = response.administrator;
+    return fetch(`${this.url}/api/administrator/login`, {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email: email, password: password }),
+    })
+      .then((response) => {
+        // Check status code
+        if (response.status === 200) {
+          return response.json();
+        }
 
-            this._email = administrator.email;
-            this._first_name = administrator.first_name;
-            this._last_name = administrator.last_name;
-            this._id = administrator._id;
-            this._logged_in = true;
-
-            return true;
-          }
-        })
-        .catch((err) => {
-          console.log(err);
+        throw new Error({
+          message: response.json().message || "Issue with login",
         });
-    } catch (err) {
-      console.log(err);
-      return err;
-    }
+      })
+      .then((response) => {
+        if (response.access_token) {
+          const administrator = response.administrator;
+
+          this._access_token = response.access_token;
+          this._email = administrator.email;
+          this._first_name = administrator.first_name;
+          this._last_name = administrator.last_name;
+          this._id = administrator._id;
+          this._logged_in = true;
+
+          return true;
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   async logout() {
-    try {
-      await axios.delete(`${this.url}/api/administrator/authenticate`, {
-        withCredentials: true,
+    return fetch(`${this.url}/api/administrator/authenticate`, {
+      method: "DELETE",
+      credentials: "include",
+      headers: {
+        "Content-type": "API-Key",
+      },
+    })
+      .then((response) => {
+        // Check status code
+        if (response.status === 200) {
+          this._logged_in = false;
+          return true;
+        }
+
+        throw new Error({
+          message: response.json().message || "Issue with logout",
+        });
+      })
+      .catch((error) => {
+        return false;
       });
-
-      this._logged_in = false;
-
-      return;
-    } catch (err) {
-      return;
-    }
   }
 }

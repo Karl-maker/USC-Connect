@@ -1,5 +1,4 @@
-import axios from "axios";
-import User from "../users/user";
+import User from "./User";
 const BACKEND_URL = process.env.BACKEND_URL;
 
 export default class Student extends User {
@@ -45,21 +44,30 @@ export default class Student extends User {
         "Content-Type": "application/json",
       },
     })
-      .then((response) => response.json())
-      .then((result) => {
-        if (result.email) {
-          this._first_name = result.first_name;
-          this._last_name = result.last_name;
-          this._email = result.email;
-          this._logged_in = true;
-        } else {
-          throw { message: "Issue" };
+      .then((response) => {
+        // Check status code
+        if (response.status === 200) {
+          return response.json();
         }
+
+        throw new Error({
+          message:
+            response.json().message || "Issue with getting student information",
+        });
+      })
+      .then((result) => {
+        this._id = result._id;
+        this._first_name = result.first_name;
+        this._last_name = result.last_name;
+        this._email = result.email;
+        this._logged_in = true;
+        return true;
       })
       .catch((error) => {
-        console.log(error);
+        return false;
       });
   }
+
   async login(email, password) {
     return fetch(`${this.url}/api/student/login`, {
       method: "POST",
@@ -70,11 +78,21 @@ export default class Student extends User {
       },
       body: JSON.stringify({ email: email, password: password }),
     })
-      .then((response) => response.json())
+      .then((response) => {
+        // Check status code
+        if (response.status === 200) {
+          return response.json();
+        }
+
+        throw new Error({
+          message: response.json().message || "Issue with login",
+        });
+      })
       .then((response) => {
         if (response.access_token) {
           const student = response.student;
 
+          this._access_token = response.access_token;
           this._student_id = student.student_id;
           this._email = student.email;
           this._first_name = student.first_name;
@@ -102,16 +120,21 @@ export default class Student extends User {
         "Content-type": "API-Key",
       },
     })
-      .then((response) => response.json())
+      .then((response) => {
+        // Check status code
+        if (response.status === 200) {
+          return response.json();
+        }
+
+        throw new Error({
+          message: response.json().message || "Issue with authentication",
+        });
+      })
       .then((response) => {
         // get access_token and place in code
 
-        if (response.access_token) {
-          this._access_token = response.access_token;
-          return true;
-        } else {
-          return false;
-        }
+        this._access_token = response.access_token;
+        return true;
       })
       .catch((err) => {
         return false;
@@ -119,30 +142,28 @@ export default class Student extends User {
   }
 
   async logout() {
-    try {
-      await axios.delete(`${this.url}/api/student/authenticate`, {
-        withCredentials: true,
+    return fetch(`${this.url}/api/student/authenticate`, {
+      method: "DELETE",
+      credentials: "include",
+      headers: {
+        "Content-type": "API-Key",
+      },
+    })
+      .then((response) => {
+        // Check status code
+        if (response.status === 200) {
+          this._logged_in = false;
+          return true;
+        }
+
+        throw new Error({
+          message: response.json().message || "Issue with logout",
+        });
+      })
+      .catch((error) => {
+        return false;
       });
-
-      this._logged_in = false;
-
-      return;
-    } catch (err) {
-      return;
-    }
   }
 
-  async register(email, password, first_name, last_name, id, campus_name) {
-    const result = await axios.post(`${this.url}/api/student/register`, {
-      email,
-      password,
-      first_name,
-      last_name,
-      id,
-      campus_name,
-    });
-    if (result.status === 200) {
-      return true;
-    } else return false;
-  }
+  async register(email, password, first_name, last_name, id, campus_name) {}
 }

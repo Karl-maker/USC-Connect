@@ -1,10 +1,12 @@
 import { useState, useEffect, useContext } from "react";
 import { useRouter } from "next/router";
-import { UserContext } from "../../context/context_provider";
+import { UserContext } from "../../context/ContextProvider";
 
 export default function RouteGuard({ children, pageProps }) {
   const UserServices = useContext(UserContext);
-  const [authenticated, setAuthenticated] = useState(UserServices.logged_in);
+  const [authenticated, setAuthenticated] = useState(
+    UserServices.user.logged_in
+  );
   const router = useRouter();
 
   useEffect(() => {
@@ -14,15 +16,17 @@ export default function RouteGuard({ children, pageProps }) {
      * an unauthorized user
      * to the login page
      */
-    if (pageProps.protected && !authenticated) {
-      router.push({
-        pathname: "/student_login",
-        query: { return_url: router.asPath },
-      });
-    }
+    setTimeout(() => {
+      if (pageProps.protected && !UserServices.user.logged_in) {
+        router.push({
+          pathname: "/student-login",
+          query: { return_url: router.asPath },
+        });
+      }
+    }, 2000);
 
-    setAuthenticated(UserServices.isLoggedIn);
-  }, [UserServices.logged_in]);
+    setAuthenticated(UserServices.user.logged_in);
+  }, [UserServices.user.logged_in]);
 
   return <>{children}</>;
 }

@@ -10,7 +10,7 @@ import MenuButton from "../../template/MenuButton";
 import AlertWidget from "../../template/Alert";
 import { Chip, Card, CardMedia, CardHeader, CardContent } from "@mui/material";
 
-export default function EventWidget({ event }) {
+export default function NoticeWidget({ event }) {
   /*
 
     Show take all info for an event and display it
@@ -35,11 +35,18 @@ export default function EventWidget({ event }) {
         open={openAlert}
         setOpen={setOpenAlert}
       />
+
       <Card
         variant="outlined"
         sx={{ borderRadius: 5, borderWidth: 0 }}
         style={{ margin: "10px", opacity: 0.9 }}
       >
+        <CardMedia
+          component="img"
+          height="200"
+          image={event.image || "https://picsum.photos/500/500"}
+          alt="Paella dish"
+        />
         <div className="row">
           <div className="col-12 text-start ">
             <CardHeader
@@ -79,19 +86,11 @@ export default function EventWidget({ event }) {
                   </MenuButton>
                 )
               }
-              subheader={`${datePresentation(new Date(event.date)).day_name} ${
-                datePresentation(new Date(event.date)).day_nth
-              }, ${datePresentation(new Date(event.date)).year}`}
+              subheader={`Notification`}
             />
           </div>
         </div>
 
-        <CardMedia
-          component="img"
-          height="200"
-          image={event.image || "https://picsum.photos/500/500"}
-          alt="Paella dish"
-        />
         <CardContent>
           <ReadMore limit={300}>{`${event.description}`}</ReadMore>
           <div className="row">
@@ -122,14 +121,6 @@ export default function EventWidget({ event }) {
                   />
                 </a>
               )}
-
-              <Chip
-                size="small"
-                sx={{ margin: 0.5 }}
-                variant="outlined"
-                label={`${event.location}`}
-                icon={<HiOutlineLocationMarker />}
-              />
             </div>
           </div>
         </CardContent>
