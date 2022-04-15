@@ -16,10 +16,17 @@ code {
     monospace;
 }
 
+h1{
+  font-size:37px;
+  margin-bottom: 40px;
+  margin-top: 10px;
+  color: white;
+}
+
 /*Form Box Div*/
 .SignUpForm{
   position: absolute;
-  margin-top: 200px;
+  margin-top: 190px;
   left:65%;
   width: fit-content;
   box-shadow: 0 5px 15px rgba(0,0,0,5);
@@ -29,11 +36,11 @@ code {
 
 /*Info Textboxes */
 .textbox{
-  margin-bottom: 25px;
+  margin-bottom: 30px;
   border-radius: 20px;
   border: none;
-  padding: 7px;
-  width: 219px;
+  padding: 12px;
+  width: 240px;
   opacity:50%;
 }
 
@@ -57,8 +64,8 @@ code {
   height: 350px;
   width: 300px;
   background-color: none;
-  padding: 30px;
-  padding-bottom: 50px;
+  padding: 70px;
+  padding-bottom: 180px;
   border-radius: 10px;
 }
 
@@ -66,13 +73,14 @@ code {
 .RegisterBtn{
   text-align: center;
   text-decoration: none;
-  margin-top: 5px;
-  border-color: #4CAF50;
+  margin-top: 20px;
+  /*border: 2px solid #4CAF50;*/
+  border: none;
   border-radius: 5em;
   display: inline-block;
   font-family: inherit;
-  font-size: 16px;
-  padding: 5px 10px;
+  font-size: 25px;
+  padding: 5px 11px;
   color: white;
   background: none;
   transition-duration: 0.4s;
@@ -81,7 +89,7 @@ code {
 
 /*Register Button Effect*/
 .RegisterBtn:hover{
-  background-color: #4CAF50; 
-  color: black; 
+  background-color: none; 
+  color: white; 
   border:2px solid #4CAF50;
 }
