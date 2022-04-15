@@ -9,7 +9,7 @@ function SignUp(){
         <div className='SignUpForm'> 
             <form> 
                 <div className='PersonalInfo'>
-                    <h1>Sign Up</h1>
+                    <h1>SIGN UP</h1>
                         <label>
                                 <input className='textbox' type="text" placeholder='First Name'/>
                             </label>
