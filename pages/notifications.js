@@ -9,6 +9,7 @@ import NoticeWidget from "../components/widgets/notices/NoticeWidget";
 
 export default function Notice() {
   const [events, setEvents] = useState([]);
+  const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const [pageNumber, setPageNumber] = useState(0);
   const [campus, setCampus] = useState("Maracas Valley");
@@ -25,20 +26,24 @@ export default function Notice() {
     */
 
     (async function fetchRequest() {
-      const result = await axios.get(
-        `${environment.env.BACKEND_URL}/api/events?page_size=10&page_number${pageNumber}&campus_name=${campus}&category=notice&department=${department}`
-      );
+      try {
+        const result = await axios.get(
+          `${environment.env.BACKEND_URL}/api/events?page_size=10&page_number${pageNumber}&campus_name=${campus}&category=notice&department=${department}`
+        );
 
-      // Change into classes first..
+        // Change into classes first..
 
-      let data = [];
+        let data = [];
 
-      for (let i = 0; i < result.data.length; i++) {
-        data.push(new Event(result.data[i]));
+        for (let i = 0; i < result.data.length; i++) {
+          data.push(new Event(result.data[i]));
+        }
+
+        setEvents(data);
+        setLoading(false);
+      } catch (err) {
+        setError(err);
       }
-
-      setEvents(data);
-      setLoading(false);
     })();
   }, [pageNumber, campus, department]);
 
@@ -109,6 +114,7 @@ export default function Notice() {
                 {
                   // Style lists of events
                 }
+                {error && <>No Events Found</>}
                 {events ? (
                   <ul
                     style={{
