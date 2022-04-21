@@ -107,7 +107,7 @@ export default function NoticeWidget({ event }) {
               />
 
               {event.resource && (
-                <a href={event.resource} target="_blank">
+                <a href={event.resource} target="_blank" rel="noreferrer">
                   <Chip
                     size="small"
                     sx={{ margin: 0.5 }}
