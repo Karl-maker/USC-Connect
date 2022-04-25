@@ -1,0 +1,95 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-image: url(../public/USCConnectDarkBackgroundHiRes.png);
+  background-size:cover;
+  background-repeat: no-repeat;
+  
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+h1{
+  font-size:37px;
+  margin-bottom: 40px;
+  margin-top: 10px;
+  color: white;
+}
+
+/*Form Box Div*/
+.SignUpForm{
+  position: absolute;
+  margin-top: 190px;
+  left:65%;
+  width: fit-content;
+  box-shadow: 0 5px 15px rgba(0,0,0,5);
+  overflow: hidden;
+  color: #000;
+}
+
+/*Info Textboxes */
+.textbox{
+  margin-bottom: 30px;
+  border-radius: 20px;
+  border: none;
+  padding: 12px;
+  width: 240px;
+  opacity:50%;
+}
+
+.textbox:hover{
+  opacity: 1;
+}
+
+/*Textbox Placeholders*/
+.placeholder {
+  color: black;
+  opacity: 100%;
+}
+
+/*Textboxes Div*/
+.PersonalInfo{
+  margin-top: auto;
+  margin-left: 0px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  height: 350px;
+  width: 300px;
+  background-color: none;
+  padding: 70px;
+  padding-bottom: 180px;
+  border-radius: 10px;
+}
+
+/*Register Button*/
+.RegisterBtn{
+  text-align: center;
+  text-decoration: none;
+  margin-top: 20px;
+  /*border: 2px solid #4CAF50;*/
+  border: none;
+  border-radius: 5em;
+  display: inline-block;
+  font-family: inherit;
+  font-size: 25px;
+  padding: 5px 11px;
+  color: white;
+  background: none;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+/*Register Button Effect*/
+.RegisterBtn:hover{
+  background-color: none; 
+  color: white; 
+  border:2px solid #4CAF50;
+}
