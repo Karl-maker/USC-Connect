@@ -8,6 +8,7 @@ import { GrAdd } from "react-icons/gr";
 import { GrHomeRounded } from "react-icons/gr";
 import { FiHelpCircle } from "react-icons/fi";
 import { CgProfile } from "react-icons/cg";
+import Image from "next/image";
 import {
   List,
   ListItem,
@@ -61,12 +62,10 @@ export default function SideBar() {
             />
           </ListItem>
         )}
-        <ListItem className="mt-2 mb-3">
-          <img
-            src={"/img/logo512.png"}
-            height={100}
-            style={{ margin: "auto" }}
-          />
+        <ListItem className="mt-2 mb-3 text-center">
+          <div style={{ margin: "auto" }}>
+            <Image src={"/img/logo512.png"} height={100} width={55} />
+          </div>
         </ListItem>
 
         {menu.map((item, index) => (

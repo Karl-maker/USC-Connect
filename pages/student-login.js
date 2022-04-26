@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import style from "../styles/modules/login.module.css";
 import { UserContext } from "../context/ContextProvider";
 import Student from "../components/api/users/Student";
@@ -66,10 +67,12 @@ function StudentLogin() {
           >
             <div className="row">
               <div className="mascot col-lg-6 col-md-12 col-sm-12 col-sx-12 mt-lg-5">
-                <img
+                <Image
                   className={style.mascot}
                   src={"/img/mascot.png"}
                   alt="USC Connect"
+                  height={50 * 3}
+                  width={65 * 3}
                 />
               </div>
               <div className="col-lg-6 col-md-12 col-sm-12 col-sx-12">
